@@ -13,20 +13,20 @@ var firebaseConfig = {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
-       Room_names = childKey;
+       Room_names_1 = childKey;
       //Start code
-row="<div class='roomname' id="+room_names+" onclick='redirect_To_room_name(this.id)'>"+room_names+"</div> <hr>"
+row="<div class='roomname' id="+Room_names_1+" onclick='redirect_To_room_name(this.id)'>"+Room_names_1+"</div> <hr>"
 document.getElementById("output").innerHTML+=row;
 
       //End code
       });});}
 getData();
  function add_room_name(){
-       room_names=document.getElementById("room_name").value;
-       firebase.database().ref("/").child(room_names).update({
+       Room_names=document.getElementById("room_name").value;
+       firebase.database().ref("/").child(Room_names).update({
             purpose:"adding Room_name"
        });
-       localStorage.setItem("room_name",room_names)
+       localStorage.setItem("room_name",Room_names)
       window.location="kwitter_page.html";
  }
 
